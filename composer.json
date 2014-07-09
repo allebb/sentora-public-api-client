@@ -1,0 +1,25 @@
+{
+    "name": "ballen/sentora-public-api-client",
+    "version": "1.0.0",
+    "description": "A web service client to work with the project's public API (Latest stable release, Latest news, Public IP address detection etc)",
+    "type": "library",
+    "keywords": ["sentora", "zpanel"],
+    "license": "GPLv3",
+    "authors": [
+        {
+            "name": "Bobby Allen",
+            "email": "ballen@bobbyallen.me",
+            "homepage": "http://bobbyallen.me",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "guzzlehttp/guzzle": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ballen\\Sentora\\PublicApiClient\\": "lib/"
+        }
+    }
+}
