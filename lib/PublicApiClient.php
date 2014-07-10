@@ -66,7 +66,7 @@ class PublicApiClient extends Wrappers\RequestWrapper
      */
     public function getVersion()
     {
-        return getWebservice('LatestVersion')->toJSON();
+        return $this->getWebservice('LatestVersion')->toJSON();
     }
 
     /**
@@ -75,7 +75,7 @@ class PublicApiClient extends Wrappers\RequestWrapper
      */
     public function getPublicIP()
     {
-        return getWebservice('PublicIpAddress')->toJSON();
+        return $this->getWebservice('PublicIpAddress')->toJSON();
     }
 
     /**
