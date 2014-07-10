@@ -2,10 +2,15 @@
 
 namespace Ballen\Sentora\PublicApiClient\Wrappers;
 
-use GuzzleHttp\Client;
+use GuzzleHttp\Client as WebClient;
 
-abstract class ClientWrapper
+abstract class RequestWrapper
 {
+
+    /**
+     * The base URL of the Sentora Public API.
+     */
+    const API_URL = 'http://api.sentora.io';
 
     /**
      * Guzzle HTTP object storage
@@ -24,12 +29,12 @@ abstract class ClientWrapper
         if (!empty($config)) {
             $this->config = $config;
         }
-        $this->apiclient = new Client($this->config);
+        $this->apiclient = new WebClient($this->config);
     }
 
     /**
      * Returns the initiated instance.
-     * @return GuzzleHttp\Client
+     * @return GuzzleHttp\Client\Client
      */
     public function instance()
     {

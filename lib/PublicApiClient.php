@@ -2,18 +2,29 @@
 
 namespace Ballen\Sentora\PublicApiClient;
 
-class PublicApiClient extends Wrappers\ClientWrapper
+class PublicApiClient extends Wrappers\RequestWrapper
 {
 
-    /**
-     * The base URL of the Sentora Public API.
-     */
-    const API_URL = 'http://api.sentora.io';
+    const ENDPOINT_NAMESPACE = 'Ballen\Sentora\PublicApiClient\Endpoints';
 
     /**
      * Stores an optional limit of results to return.
      */
     private $result_limit = 0;
+
+    /**
+     * Enpoint object storage.
+     */
+    private $endpoint;
+
+    /**
+     * Constructor!
+     * @param array $config Optional Guzzle configuration (eg. Proxy settings etc.)
+     */
+    public function __construct($config = [])
+    {
+        parent::__construct($config);
+    }
 
     /**
      * Sets an optional result limit where applicable.
@@ -38,6 +49,50 @@ class PublicApiClient extends Wrappers\ClientWrapper
     public function getResultLimit()
     {
         return $this->result_limit;
+    }
+
+    /**
+     * Get latest project news.
+     * @return Ballen\Sentora\PublicApiClient\Wrappers\ResponseWrapper
+     */
+    public function getNews()
+    {
+        return $this->getWebservice('LatestNews')->toJSON();
+    }
+
+    /**
+     * Gets the latest stable version of the Sentora software.
+     * @return Ballen\Sentora\PublicApiClient\Wrappers\ResponseWrapper
+     */
+    public function getVersion()
+    {
+        return getWebservice('LatestVersion')->toJSON();
+    }
+
+    /**
+     * Gets the public IP address of the current server.
+     * @return Ballen\Sentora\PublicApiClient\Wrappers\ResponseWrapper
+     */
+    public function getPublicIP()
+    {
+        return getWebservice('PublicIpAddress')->toJSON();
+    }
+
+    /**
+     * Initates an endpoint request.
+     * @param string $endpoint
+     * @return Ballen\Sentora\PublicApiClient\Wrappers\ResponseWrapper
+     * @throws EndpointNotFoundException
+     */
+    private function getWebservice($endpoint = '')
+    {
+        if (class_exists(self::ENDPOINT_NAMESPACE . '\\' . $endpoint)) {
+            $this->endpoint = self::ENDPOINT_NAMESPACE . '\\' . $endpoint;
+            $request = (new $this->endpoint)->request();
+            return $request->response();
+        } else {
+            throw new \Ballen\Sentora\PublicApiClient\Exceptions('The requested endpoint (' . $endpoint . ') was not found!');
+        }
     }
 
 }
