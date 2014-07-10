@@ -18,10 +18,7 @@ This client library is released under the GPLv3 license, you are welcome to use 
 Examples
 --------
 
-```php
-
-use Ballen\Sentora\PublicApiClient;
-```
+A set of working examples can be found in the ``/examples`` directory.
 
 Support
 -------
