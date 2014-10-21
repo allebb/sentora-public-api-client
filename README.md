@@ -2,7 +2,7 @@ Sentora Public API Client
 =====
 
 A web service client to work with the project's public API, using the client you are able to easily query information from the public
-API service that is provided by the project at http://api.sentora.io such as the Latest stable release, Latest news, Public IP address detection service etc.
+API service that is provided by the project at http://api.sentora.org such as the Latest stable release, Latest news, Public IP address detection service etc.
 
 Requirements
 ------------
