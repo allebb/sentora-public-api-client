@@ -10,7 +10,7 @@ abstract class RequestWrapper
     /**
      * The base URL of the Sentora Public API.
      */
-    const API_URL = 'http://api.sentora.io';
+    const API_URL = 'http://api.sentora.org';
 
     /**
      * Guzzle HTTP object storage
