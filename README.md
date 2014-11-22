@@ -13,7 +13,7 @@ Requirements
 License
 -------
 
-This client library is released under the GPLv3 license, you are welcome to use it, improve it and contribute your changes back!
+This client library is released under the [LICENSE](MIT License).
 
 Examples
 --------
