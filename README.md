@@ -13,7 +13,7 @@ Requirements
 License
 -------
 
-This client library is released under the [LICENSE](MIT License).
+This client library is released under the [MIT License](LICENSE).
 
 Examples
 --------
